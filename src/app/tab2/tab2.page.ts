@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Product } from '../shared/models/Product';
 
 @Component({
@@ -39,7 +38,6 @@ export class Tab2Page {
   ];
 
   public filterActived: number = 0;
-  public urlStorage: string = environment.urlStorage;
 
   constructor() {}
 
