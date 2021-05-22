@@ -1,3 +1,7 @@
+ion-content {
+  --ion-background-color: #f6f6f6;
+}
+
 .grid-products {
   display: flex;
   flex-wrap: wrap;
@@ -12,4 +16,15 @@
   margin: 20px 25px;
   //overflow-x: scroll;
   justify-content: space-between;
+}
+
+h3 {
+  font-weight: bold;
+  margin-bottom: 2px;
+  font-size: 1.5em;
+}
+h4 {
+  font-weight: 300;
+  margin-top: 2px;
+  font-size: 1.55em;
 }
