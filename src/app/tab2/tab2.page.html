@@ -5,9 +5,11 @@
 
 <ion-content [fullscreen]="true">
 
-  <p>---</p>
-  <app-item-filter></app-item-filter>
-  <p>---</p>
+  <section class="filters-container">
+    <app-item-filter *ngFor="let item of filterOptions"
+      [optionFilter]="item" [filterActived]="filterActived">
+    </app-item-filter>
+  </section>
 
   <section class="grid-products">
     <section *ngFor="let product of products" class="product">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-item-filter',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemFilterComponent implements OnInit {
 
-  public icon: string = "assets/icons/cake.png";
+  @Input() optionFilter: any = {};
+  @Input() filterActived: number;
 
   constructor() { }
 
