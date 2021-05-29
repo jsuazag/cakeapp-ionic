@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlStorage: 'https://cake-app-cede.herokuapp.com/'
+  urlStorage: 'https://cake-app-cede.herokuapp.com/',
+  urlAPI: 'https://cake-app-cede.herokuapp.com',
 };
 
 /*

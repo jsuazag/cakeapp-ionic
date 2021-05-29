@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .header-form {
   font-size: 1.95em;
   font-weight: bold;
@@ -12,9 +16,8 @@
 
 .logo-app {
   display: flex;
+  justify-content: center;
   ion-img {
     width: 220px;
-    justify-content: center;
-    align-items: center;
   }
 }

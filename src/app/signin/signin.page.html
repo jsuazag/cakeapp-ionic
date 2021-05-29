@@ -6,17 +6,17 @@
     <div class="logo-app">
       <ion-img src="assets/logo.png"></ion-img>
     </div>
-    <form>
+    <form [formGroup]="formGroupSignin">
       <ion-item>
         <ion-label color="secondary" position="floating">Email address</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input formControlName="email" type="email"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="secondary" position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
       <br /><br />
-      <ion-button shape="round" expand="full">Login</ion-button>
+      <ion-button (click)="submitSignin()" [disabled]="formGroupSignin.invalid" shape="round" expand="full">Login</ion-button>
     </form>
   </section>
 </ion-content>
