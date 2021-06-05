@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { Drivers } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
@@ -19,7 +20,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: "db_storage",
+      driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage, Drivers.SecureStorage]
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

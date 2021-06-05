@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from '../api/users/users.service';
+import { StorageService } from '../shared/services/storage-service/storage.service';
 import { ToastService } from '../shared/services/toast-service/toast-service.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class SigninPage implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private toastService: ToastService,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) {}
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class SigninPage implements OnInit {
 
   private validateSignin (data: any): void {
     this.usersService.signin(data).subscribe(response => {
+      this.storageService.set('token', response.token);
       this.router.navigate(['/home']);
     }, error => {
       this.toastService.showToastMessage("Email/Password invaid. Please retry");
