@@ -14,4 +14,12 @@ export class ProductsService {
     const url = `${environment.urlAPI}/products`;
     return this.httpClient.get(url);
   }
+
+  public getAllByCategory (idCategory: number): Observable<any> {
+    const url = `${environment.urlAPI}/products`;
+    const options = {
+      params: { category: `${idCategory}` }
+    }
+    return this.httpClient.get(url, options);
+  }
 }

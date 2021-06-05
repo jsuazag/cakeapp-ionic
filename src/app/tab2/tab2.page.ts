@@ -13,12 +13,12 @@ export class Tab2Page implements OnInit {
 
   public filterOptions: Array<any> = [
     {
-      id: 1,
+      id: 2,
       icon: 'assets/icons/cake.png',
       label: 'Cakes',
     },
     {
-      id: 2,
+      id: 1,
       icon: 'assets/icons/coffee.png',
       label: 'Coffees',
     },
@@ -43,10 +43,22 @@ export class Tab2Page implements OnInit {
     this.loadProducts();
   }
 
-  private loadProducts (): void {
-    this.productsService.getAll().subscribe(productsResponse => {
-      this.products = productsResponse;
-    });
+  private loadProducts (idCategory: number = 0): void {
+    if (idCategory === 0) {
+      this.productsService.getAll().subscribe(productsResponse => {
+        this.products = productsResponse;
+      });
+    } else {
+      this.productsService.getAllByCategory(idCategory).subscribe(productsResponse => {
+        this.products = productsResponse;
+      });
+    }
+  }
+
+  public categoryChoosed(idCategory: number) {
+    console.log('idCategory Tab2---->', idCategory);
+    this.filterActived = idCategory;
+    this.loadProducts(idCategory);
   }
 
 }

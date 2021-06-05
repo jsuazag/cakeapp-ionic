@@ -13,6 +13,7 @@
       *ngFor="let item of filterOptions"
       [optionFilter]="item"
       [filterActived]="filterActived"
+      (categoryChoosed)="categoryChoosed($event)"
     >
     </app-item-filter>
   </section>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-item-filter',
@@ -9,9 +9,15 @@ export class ItemFilterComponent implements OnInit {
 
   @Input() optionFilter: any = {};
   @Input() filterActived: number;
+  @Output() categoryChoosed: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
+
+  public filterEvent(idCategory) {
+    console.log('idCategory', idCategory);
+    this.categoryChoosed.emit(idCategory);
+  }
 
 }
