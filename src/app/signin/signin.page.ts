@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsersService } from '../api/users/users.service';
+import { ToastService } from '../shared/services/toast-service/toast-service.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +14,9 @@ export class SigninPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -33,7 +37,9 @@ export class SigninPage implements OnInit {
 
   private validateSignin (data: any): void {
     this.usersService.signin(data).subscribe(response => {
-      console.log('response', response);
+      this.router.navigate(['/home']);
+    }, error => {
+      this.toastService.showToastMessage("Email/Password invaid. Please retry");
     });
   }
 
