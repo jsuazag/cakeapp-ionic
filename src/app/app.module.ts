@@ -10,8 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Drivers } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage-angular';
-
 import { AuthInterceptorService  } from './shared/interceptors/auth-interceptor.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +30,7 @@ import { AuthInterceptorService  } from './shared/interceptors/auth-interceptor.
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    BarcodeScanner
   ],
   bootstrap: [AppComponent],
 })

@@ -6,9 +6,9 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-button color="primary">Primary</ion-button>
+  <ion-button (click)="launchCamera()" color="primary">Launch Barcode Scanner</ion-button>
 
-  <app-explore-container name="Tab 1 page - Hola tab página">
-  </app-explore-container>
+  <p>{{textScan}}</p>
+
 
 </ion-content>

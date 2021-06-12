@@ -20,7 +20,7 @@ export class StorageService {
     await this._storage.set(key, value);
   }
 
-  public async get (key: string) {
+  public async get (key: string): Promise<any> {
     return await this._storage.get(key);
   }
 
