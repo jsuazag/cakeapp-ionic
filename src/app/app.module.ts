@@ -7,9 +7,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Drivers } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage-angular';
+
+import { AuthInterceptorService  } from './shared/interceptors/auth-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,11 +23,14 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     HttpClientModule,
     SharedModule,
     IonicStorageModule.forRoot({
-      name: "db_storage",
+      name: "db_cakeapp",
       driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage, Drivers.SecureStorage]
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

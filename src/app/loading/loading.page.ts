@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { StorageService } from '../shared/services/storage-service/storage.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { StorageService } from '../shared/services/storage-service/storage.servi
 })
 export class LoadingPage implements OnInit {
 
-  constructor(private storageService: StorageService) { }
+  constructor(
+      private storageService: StorageService,
+      private navCtrl: NavController
+  ) { }
 
   ngOnInit() {
     this.validateSession();
@@ -16,7 +20,11 @@ export class LoadingPage implements OnInit {
 
   private async validateSession () {
     const token = await this.storageService.get('token');
-    console.log('token', token);
+    this.redirect(token ? '/home' : '/signin')
+  }
+
+  private redirect (path: string) {
+    this.navCtrl.navigateRoot(path);
   }
 
 }
